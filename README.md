@@ -40,7 +40,7 @@ wget -O install.sh http://download.bt.cn/install/install_6.0.sh && bash install.
 ### 降级
 下载指定版本降级包
 ```
-curl -L https://github.com/weiwang3056/baota_release/blob/main/LinuxPanel/LinuxPanel-7.4.0.zip\?raw\=true > LinuxPanel-7.4.0.zip
+curl -L https://github.com/xijoe/baota_release/blob/main/LinuxPanel/LinuxPanel-7.4.0.zip\?raw\=true > LinuxPanel-7.4.0.zip
 ```
 解压对应的降级包，运行panel文件夹中的update.sh脚本即可
 
