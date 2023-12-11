@@ -15,6 +15,24 @@
 
 ### 安装宝塔
 
+云服务器国内、香港地区的用户，可以尝试执行下面的命令，指定节点解决此问题
+```
+#优先选择这条命令执行
+sed -i "/bt.cn/d" /etc/hosts
+echo "103.179.243.14  www.bt.cn download.bt.cn api.bt.cn dg1.bt.cn dg2.bt.cn" >> /etc/hosts
+```  
+
+云服务器境外地区的用户，可以尝试执行下面的命令，指定这个节点解决此问题
+```
+sed -i "/bt.cn/d" /etc/hosts
+echo "128.1.164.196 www.bt.cn download.bt.cn api.bt.cn dg1.bt.cn dg2.bt.cn" >> /etc/hosts
+```
+
+
+注意：没有使用上的问题或只是偶尔卡一下的不要执行上面的命令，避免影响体验！已经误执行命令的可以执行这条命令清理绑定的节点：
+```
+sed -i "/bt.cn/d" /etc/hosts
+```
 先使用宝塔官方的安装脚本安装最新版宝塔
 * Centos安装命令：
 
