@@ -44,6 +44,15 @@ curl -L https://github.com/xijoe/baota_release/blob/main/LinuxPanel/LinuxPanel-7
 ```
 解压对应的降级包，运行panel文件夹中的update.sh脚本即可
 
+```
+unzip LinuxPanel-*
+（4）、切换到降级包目录
+cd panel
+（5）、执行脚本
+bash update.sh
+（6）、删除降级包
+cd .. && rm -f LinuxPanel-*.zip && rm -rf panel
+```
 # 注意事项
 
 * 宝塔降级后会出现密码不正确的情况，修改密码即可（bt 5）
