@@ -56,9 +56,13 @@ wget -O install.sh http://download.bt.cn/install/install_6.0.sh && bash install.
 ```
 
 ### 降级
-下载指定版本降级包
+下载指定7.4.0版本降级包
 ```
-curl -L https://github.com/xijoe/baota_release/blob/main/LinuxPanel/LinuxPanel-7.4.0.zip\?raw\=true > LinuxPanel-7.4.0.zip
+curl -L https://github.com/xu5343/baota_release/blob/main/LinuxPanel/LinuxPanel-7.4.0.zip\?raw\=true > LinuxPanel-7.4.0.zip
+```
+下载指定7.7.0版本降级包
+```
+curl -L https://github.com/xu5343/baota_release/blob/main/LinuxPanel/LinuxPanel-7.7.0.zip\?raw\=true > LinuxPanel-7.7.0.zip
 ```
 解压对应的降级包，运行panel文件夹中的update.sh脚本即可
 
@@ -93,3 +97,30 @@ cd .. && rm -f LinuxPanel-*.zip && rm -rf panel
 * Q：降级后登录宝塔面板时无法显示验证码图片或无法下载文件
 
   S：需要将/www/server/panel/BTPanel/\_\_init\_\_.py文件中的send_file函数中的cache_timeout参数名改为max_age
+
+# 手动破解
+
+1，屏蔽手机号
+```
+sed -i "s|bind_user == 'True'|bind_user == 'XXXX'|" /www/server/panel/BTPanel/static/js/index.js
+```
+2，删除强制绑定手机js文件
+```
+rm -f /www/server/panel/data/bind.pl
+```
+3，手动解锁宝塔所有付费插件为永不过期
+
+文件路径：/www/server/panel/data/plugin.json
+
+搜索字符串："endtime": -1全部替换为"endtime": 999999999999
+
+4，给plugin.json文件上锁防止自动修复为免费版
+```
+chattr +i /www/server/panel/data/plugin.json
+```
+============================
+
+！！如需取消屏蔽手机号
+```
+sed -i "s|if (bind_user == 'REMOVED') {|if (bind_user == 'True') {|g" /www/server/panel/BTPanel/static/js/index.js
+```
